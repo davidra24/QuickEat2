@@ -233,7 +233,7 @@ module.exports.obtenerPedidosComidaCantidad = function obtenerPedidosComidaCanti
          return res.json(results);
     });
 };
-module.exports.obtenerPedidosRestaurantesClientesId = function obtenerPedidosRestaurantesClientesId(req, res, next) {
+module.exports.obtenerPedidosComidaCantidadId = function obtenerPedidosComidaCantidadId(req, res, next) {
 	var id = req.param('id');
 	var results = {};
 	results.PedidoComidaCantidad = [];
@@ -245,10 +245,10 @@ module.exports.obtenerPedidosRestaurantesClientesId = function obtenerPedidosRes
     });
 };
 //------------------------ PEDIDOS RESTAURANTES CLIENTES ------------------------------
-module.exports.obtenerPedidosRestaurantesClientes = function(req, res, next) {
+module.exports.obtenerPedidosRestaurantesClientes = function obtenerPedidosRestaurantesClientes(req, res, next) {
 	var results = {};
 	results.PedidoComidaCantidad = [];
-	client.query('SELECT * FROM "PEDIDOSCOMIDACANTIDAD"', function(err, result) {
+	client.query('SELECT * FROM "PEDIDOSRESTAURANTESCLIENTES"', function(err, result) {
         if(err) return console.error(err);
          var resultado = (result.rows);
          results.PedidoComidaCantidad.push(resultado);
@@ -259,7 +259,7 @@ module.exports.obtenerPedidosRestaurantesClientesId = function obtenerPedidosRes
 	var id = req.param('id');
 	var results = {};
 	results.PedidoComidaCantidad = [];
-	client.query('SELECT * FROM "PEDIDOSCOMIDACANTIDAD" WHERE ID = ' + id, function(err, result) {
+	client.query('SELECT * FROM "PEDIDOSRESTAURANTESCLIENTES" WHERE ID = ' + id, function(err, result) {
         if(err) return console.error(err);
          var resultado = (result.rows);
          results.PedidoComidaCantidad.push(resultado);
