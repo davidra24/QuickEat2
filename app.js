@@ -12,10 +12,6 @@ var express = require('express')
 var app = express();
 
 // all environments
-var pg  = require('pg');
-var conString   = process.env.DATABASE_URL;
-var client = new pg.Client(conString);
-client.connect();
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -34,15 +30,19 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-app.get('/obtenerCategoria', function (req, res, next) {
-	var results = {};
-	results.Categorias = [];
-		var query = client.query('SELECT * FROM CATEGORIAS');
-	    query.on('row', function (row){
-	      results.Categorias.push(row);
-	    });
-	    query.on('end', function (){
-	      return res.json(results);
-	    });
-});
-
+var models = require('./models/principal.js')
+app.get('/obtenerCategoria', models.obtenerCategoria);
+app.get('/obtenerCargos', models.obtenerCargos);
+app.get('/obtenerClientes', models.obtenerClientes);
+app.get('/obtenerCobroPedido', models.obtenerCobroPedido);
+app.get('/obtenerComidaCantidad', models.obtenerComidaCantidad);
+app.get('/obtenerComidas', models.obtenerComidas);
+app.get('/obtenerEmpleados', models.obtenerEmpleados);
+app.get('/obtenerIngredienteComida', models.obtenerIngredienteComida);
+app.get('/obtenerIngredientes', models.obtenerIngredientes);
+app.get('/obtenerPedidos', models.obtenerPedidos);
+app.get('/obtenerPedidosComidaCantidad', models.obtenerPedidosComidaCantidad);
+app.get('/obtenerPredidosRestaurantesClientes', models.obtenerPedidosRestaurantesClientes);
+app.get('/obtenerPreparacion', models.obtenerPreparacion);
+app.get('/obtenerRestauranteComida', models.obtenerRestauranteComida);
+app.get('/obtenerRestaurantes', models.obtenerRestaurantes);
