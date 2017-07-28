@@ -34,7 +34,7 @@ var models = require('./models/principal.js');
 app.get('/obtenerCategoria', models.obtenerCategoria);
 app.get('/obtenerCategoriaId', models.obtenerCategoriaId);
 app.get('/agregarCategoria', models.agregarCategoria);
-app.get('/actualizarCategoria', models.actualziarCategoria);
+app.get('/actualizarCategoria', models.actualizarCategoria);
 app.get('/eliminarCategoria', models.eliminarCategoria);
 //----------------------- CARGOS -----------------------------
 app.get('/obtenerCargos', models.obtenerCargos);
@@ -105,7 +105,7 @@ app.get('/actualizarPedidosComidaCantidad', models.actualizarPedidosComidaCantid
 app.get('/eliminarPedidosComidaCantidad', models.eliminarPedidosComidaCantidad);
 //----------------------------- PEDIDOS RESTAURANTES ----------------------------------
 app.get('/obtenerPedidosRestaurantes', models.obtenerPedidosRestaurantes);
-app.get('/obtenerPedidosRestaurantesId', models.obtenerPedidosRestaurantesd);
+app.get('/obtenerPedidosRestaurantesId', models.obtenerPedidosRestaurantesId);
 app.get('/agregarPedidosRestaurantes', models.agregarPedidosRestaurantes);
 app.get('/actualizarPedidosRestaurantes', models.actualizarPedidosRestaurantes);
 app.get('/eliminarPedidosRestaurantes', models.eliminarPedidosRestaurantes);
@@ -124,6 +124,6 @@ app.get('/eliminarRestauranteComida', models.eliminarRestauranteComida);
 //------------------------ RESTAURANTES ------------------------------
 app.get('/obtenerRestaurantes', models.obtenerRestaurantes);
 app.get('/obtenerRestaurantesId', models.obtenerRestaurantesId);
-app.get('/agregarRestaurante', models.agregarRestaurantes);
+app.get('/agregarRestaurante', models.agregarRestaurante);
 app.get('/actualizarRestaurante', models.actualizarRestaurante);
 app.get('/eliminarRestaurante', models.eliminarRestaurante);
