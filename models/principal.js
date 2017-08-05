@@ -23,9 +23,10 @@ module.exports.obtenerCategoriaId = function obtenerCategoriaId(req, res, next) 
 module.exports.agregarCategoria = function agregarCategoria(req, res, next) {
 	var nombre = req.param('nombre');
 	var info = req.param('info');
+	var subcat = req.param('subcat');
 	var results = {};
-	client.query('INSERT INTO public."CATEGORIAS" (nombre, info) VALUES ("'+
-		nombre + '", "' + info + '")').catch(function (err) {
+	client.query('INSERT INTO public."CATEGORIAS" (nombre, info, sub_categoria) VALUES ("'+
+		nombre + '", "' + info + '", "'+ subcat + '")').catch(function (err) {
 			return next(err);
 		});
 };
@@ -33,9 +34,10 @@ module.exports.actualizarCategoria = function actualizarCategoria(req, res, next
 	var id = req.param('id');
 	var nombre = req.param('nombre');
 	var info = req.param('info');
+	var subcat = req.param('subcat');
 	var results = {};
 	client.query('UPDATE public."CATEGORIAS" SET nombre = "'+ nombre +'", '+
-		'info = "' + info + '" WHERE id =' + id).then(function () {
+		'info = "' + info + '" sub_categoria = "'+ subcat +'" WHERE id =' + id).then(function () {
 			res.status(200).json({
 		          status: 'success',
 		        });
