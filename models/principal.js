@@ -301,8 +301,8 @@ module.exports.agregarComida = function agregarComida(req, res, next) {
 	var info = req.param('info');
 	var id_categoria = req.param('id_categoria');
 	var results = {};
-	client.query('INSERT INTO public."COMIDAS" (nombre, info, id_categoria)'+
-			'VALUES ("'+ nombre + '", "' + info + '", '+ id_categoria +')'
+	client.query('INSERT INTO public."COMIDAS" (nombre, info)'+
+			'VALUES ("'+ nombre + '", "' + info + '")'
 			).catch(function (err) {
 			return next(err);
 		});
@@ -311,10 +311,9 @@ module.exports.actualizarComida = function actualizarComida(req, res, next) {
 	var id = req.param('id');
 	var nombre = req.param('nombre');
 	var info = req.param('info');
-	var id_categoria = req.param('id_categoria');
 	var results = {};
 	client.query('UPDATE public."COMIDAS" SET nombre = "'+ nombre +'", '+
-		'info = "' + info + '", id_categoria =' + id_categoria + ' WHERE id =' + id
+		'info = "' + info + '" WHERE id =' + id
 		).then(function () {
 			res.status(200).json({
 		          status: 'success',
@@ -807,11 +806,12 @@ module.exports.agregarRestauranteComida = function agregarRestauranteComida(req,
 	var disponible = req.param('disponible');
 	var info = req.param('info');
 	var precio = req.param('precio');
+	var id_categoria = req.param('id_categoria');
 	var id = id_restaurante+id_comida;
 	var results = {};
 	client.query('INSERT INTO public."RESTAURANTECOMIDA" (id, id_restaurante, id_comida' +
-			'disponible, info, precio) VALUES (' + id + ', '+ id_restaurante +', ' + id_comida + ', "' +
-			disponible + '", "' + info + '", ' + precio + ')').catch(function (err) {
+			'disponible, info, precio, id_categoria) VALUES (' + id + ', '+ id_restaurante +', ' + id_comida + ', "' +
+			disponible + '", "' + info + '", ' + precio + ', ' + id_categoria + ')').catch(function (err) {
 			return next(err);
 		});
 };
