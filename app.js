@@ -10,12 +10,13 @@ var express = require('express')
   , path = require('path');
 
 var app = express();
+var cors = require('cors');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(allowCrossDomain);
+app.use(cors());
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
